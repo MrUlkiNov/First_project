@@ -1,0 +1,21 @@
+{% extends 'PC_Configurator/base_list.html' %}
+{% block Title %} Кулер {% endblock %}
+{% load static %}
+{% block css_additional %}
+    <link rel="stylesheet" href=" {% static 'PC_Configurator/style.css' %}">
+    <link rel="stylesheet" href=" {% static 'PC_Configurator/product.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="product">
+        <h1>{{ cooler.Name }}</h1>
+
+        <h2>Описание:</h2>
+        <div class="photo">
+            <img src="{{ cooler.Photo.url }}" width="400" height="400">
+        </div>
+        <h3>Основание - {{ cooler.Material }}<br>Кол-во оборотов - {{ cooler.Speed }} об/мин <br> Сила шума
+            - {{ cooler.Noise }} дБ <br>Разъем подключения -  {{ cooler.Connector }} pin <br> Мощность - {{ cooler.Power }} Вт</h3>
+
+
+    </div>
+{% endblock %}

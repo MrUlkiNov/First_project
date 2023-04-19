@@ -1,0 +1,22 @@
+{% extends 'PC_Configurator/base_list.html' %}
+{% block Title %} Видеокарта {% endblock %}
+{% load static %}
+{% block css_additional %}
+    <link rel="stylesheet" href=" {% static 'PC_Configurator/style.css' %}">
+    <link rel="stylesheet" href=" {% static 'PC_Configurator/product.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="product">
+        <h1>{{ videocard.Name }}</h1>
+
+        <h2>Описание:</h2>
+        <div class="photo">
+            <img src="{{ videocard.Photo.url }}" width="400" height="400">
+        </div>
+        <h3>Кол-во памяти - {{ videocard.Memory }}ГБ<br>Тип видеопамяти-{{ videocard.Type_memory }}<br> Видеоразъмемы
+            -{{ videocard.Connectors }}<br> PCI слот - {{ videocard.PCI_slot }}<br>Разрядность-{{ videocard.Bit }}
+            бит<br>GPU {{ videocard.Video_frequency }} МГц</h3>
+
+
+    </div>
+{% endblock %}

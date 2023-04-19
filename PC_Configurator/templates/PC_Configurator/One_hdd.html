@@ -1,0 +1,21 @@
+{% extends 'PC_Configurator/base_list.html' %}
+{% block Title %} Жесткий диск{% endblock %}
+{% load static %}
+{% block css_additional %}
+    <link rel="stylesheet" href=" {% static 'PC_Configurator/style.css' %}">
+    <link rel="stylesheet" href=" {% static 'PC_Configurator/product.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="product">
+        <h1>{{ hdd.Name }}</h1>
+
+        <h2>Описание:</h2>
+        <div class="photo">
+            <img src="{{ hdd.Photo.url }}" width="400" height="400">
+        </div>
+        <h3>Интерфейс - {{ hdd.Interface }}ГБ<br>Пропускная способость-{{ hdd.Bandwidth }}Гбит/с<br> Скорость оборотов
+            -{{ hdd.Speed }} об/ми<br>Кэш память -  {{ hdd.Cache }} МБ</h3>
+
+
+    </div>
+{% endblock %}

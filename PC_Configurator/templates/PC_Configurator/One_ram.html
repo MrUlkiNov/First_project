@@ -1,0 +1,21 @@
+{% extends 'PC_Configurator/base_list.html' %}
+{% block Title %} Оперативная память {% endblock %}
+{% load static %}
+{% block css_additional %}
+    <link rel="stylesheet" href=" {% static 'PC_Configurator/style.css' %}">
+    <link rel="stylesheet" href=" {% static 'PC_Configurator/product.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="product">
+        <h1>{{ ram.Name }}</h1>
+
+        <h2>Описание:</h2>
+        <div class="photo">
+            <img src="{{ ram.Photo.url }}" width="400" height="400">
+        </div>
+        <h3>Тип памяти - {{ ram.Memory_type }}ГБ<br>Объем памяти-{{ ram.Memory }}<br> Максимальная частота
+            -{{ ram.Max_frequency }}</h3>
+
+
+    </div>
+{% endblock %}

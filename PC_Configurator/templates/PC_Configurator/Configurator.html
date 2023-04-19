@@ -1,0 +1,186 @@
+{% extends 'PC_Configurator/base_list.html' %}
+{% load static %}
+{% block Title %} Конфигуратор {% endblock %}
+{% block css_additional %}
+    <link rel="stylesheet" href=" {% static 'PC_Configurator/configurator.css' %}">
+    <link rel="stylesheet" href=" {% static 'PC_Configurator/style.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="submit">
+        <h1 class="text"><b>Вывод</b></h1>
+        {% for proc in product1 %}
+            {% for math in product2 %}
+                {% for vid in product3 %}
+                    {% for op in product4 %}
+                        {% for hdd in product5 %}
+                            {% for pow in product6 %}
+                                {% for co in product7 %}
+                                    {% for ca in product8 %}
+                                        {% if proc.Socket != math.Socket %}
+                                            <h1 class="error">Тип сокета не подходит.Сборка невозможна </h1>
+                                        {% elif math.PCI_slot != vid.PCI_slot %}
+                                            <h1 class="error">Тип PCI слота не подходит.Сборка невозможна </h1>
+                                        {% elif op.Memory_type != math.Memory_type %}
+                                            <h1 class="error">Тип памяти не подходит.Сборка невозможна </h1>
+                                        {% elif ca.Form != math.Size %}
+                                            <h1 class="error">Форм фактор корпуса не подходит.Сборка невозможна </h1>
+                                        {% else %}
+                                            {% with total_price=proc.Price|add:math.Price|add:vid.Price|add:op.Price|add:hdd.Price|add:pow.Price|add:co.Price|add:ca.Price %}
+                                                <button class="button"><b>Собрать сейчас</b></button>
+                                                <h2 class="finall"><b>Итого: {{ total_price }}₽</b></h2>
+                                            {% endwith %}
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endfor %}
+                            {% endfor %}
+                        {% endfor %}
+                    {% endfor %}
+                {% endfor %}
+            {% endfor %}
+        {% endfor %}
+    </div>
+    <div class="iron-item">
+        {% if product1|length < 1 %}
+            <h1>Добавьте процессор</h1>
+            <a href="{% url 'processors' %}" class="processor-item">
+                <button class="button">Добавить</button>
+            </a>{% endif %}
+        {% for i in product1 %}
+            <h1 class="name">{{ i.Name }}</h1><br><h2 class="price"><b>Цена {{ i.Price }}₽</b></h2><br>
+            <img class="image" src="{{ i.Photo.url }}" width="200" height="150">
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="processor_id" value="{{ i.id }}">
+                <button type="submit" class="btn-succes">
+                    Удалить
+                </button>
+            </form>
+        {% endfor %}
+    </div>
+    <div class="iron-item">
+        {% if product2|length < 1 %}
+            <h1>Добавьте материнскую плату</h1>
+            <a href="{% url 'motherboards' %}" class="processor-item">
+                <button class="button">Добавить</button>
+            </a></a>{% endif %}
+        {% for i in product2 %}
+            <h1 class="name">{{ i.Name }}</h1><br><h2 class="price"><b>Цена {{ i.Price }}₽</b></h2><br>
+            <img class="image" src="{{ i.Photo.url }}" width="200" height="150">
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="motherboard_id" value="{{ i.id }}">
+                <button type="submit" class="btn-succes">
+                    Удалить
+                </button>
+            </form>
+        {% endfor %}
+    </div>
+    <div class="iron-item">
+        {% if product3|length < 1 %}
+            <h1>Добавьте видеокарту</h1>
+            <a href="{% url 'videocards' %}" class="processor-item">
+                <button class="button">Добавить</button>
+            </a>{% endif %}
+        {% for i in product3 %}
+            <h1 class="name">{{ i.Name }}</h1><br><h2 class="price"><b>Цена {{ i.Price }}₽</b></h2><br>
+            <img class="image" src="{{ i.Photo.url }}" width="200" height="150">
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="videocard_id" value="{{ i.id }}">
+                <button type="submit" class="btn-succes">
+                    Удалить
+                </button>
+            </form>
+        {% endfor %}
+    </div>
+    <div class="iron-item">
+        {% if product4|length < 1 %}
+            <h1>Добавьте оперативную память</h1>
+            <a href="{% url 'RAMS' %}" class="processor-item">
+                <button class="button">Добавить</button>
+            </a>{% endif %}
+        {% for i in product4 %}
+            <h1 class="name">{{ i.Name }}</h1><br><h2 class="price"><b>Цена {{ i.Price }}₽</b></h2><br>
+            <img class="image" src="{{ i.Photo.url }}" width="200" height="150">
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="RAM_id" value="{{ i.id }}">
+                <button type="submit" class="btn-succes">
+                    Удалить
+                </button>
+            </form>
+        {% endfor %}
+    </div>
+    <div class="iron-item">
+        {% if product5|length < 1 %}
+            <h1>Добавьте жесткий диск</h1>
+            <a href="{% url 'HDDS' %}" class="processor-item">
+                <button class="button">Добавить</button>
+            </a>{% endif %}
+        {% for i in product5 %}
+            <h1 class="name">{{ i.Name }}</h1><br><h2 class="price"><b>Цена {{ i.Price }}₽</b></h2><br>
+            <img class="image" src="{{ i.Photo.url }}" width="200" height="150">
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="HDD_id" value="{{ i.id }}">
+                <button type="submit" class="btn-succes">
+                    Удалить
+                </button>
+            </form>
+        {% endfor %}
+    </div>
+    <div class="iron-item">
+        {% if product6|length < 1 %}
+            <h1>Добавьте блок питания</h1>
+            <a href="{% url 'powerblocks' %}" class="processor-item">
+                <button class="button">Добавить</button>
+            </a>{% endif %}
+        {% for i in product6 %}
+            <h1 class="name">{{ i.Name }}</h1><br><h2 class="price"><b>Цена {{ i.Price }}₽</b></h2><br>
+            <img class="image" src="{{ i.Photo.url }}" width="200" height="150">
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="powerblock_id" value="{{ i.id }}">
+                <button type="submit" class="btn-succes">
+                    Удалить
+                </button>
+            </form>
+        {% endfor %}
+    </div>
+    <div class="iron-item">
+        {% if product7|length < 1 %}
+            <h1>Добавьте кулер</h1>
+            <a href="{% url 'coolers' %}" class="processor-item">
+                <button class="button">Добавить</button>
+            </a>{% endif %}
+        {% for i in product7 %}
+            <h1 class="name">{{ i.Name }}</h1><br><h2 class="price"><b>Цена {{ i.Price }}₽</b></h2><br>
+            <img class="image" src="{{ i.Photo.url }}" width="200" height="150">
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="cooler_id" value="{{ i.id }}">
+                <button type="submit" class="btn-succes">
+                    Удалить
+                </button>
+            </form>
+        {% endfor %}
+    </div>
+        <div class="iron-item">
+        {% if product8|length < 1 %}
+            <h1>Добавьте корпус</h1>
+            <a href="{% url 'cases' %}" class="processor-item">
+                <button class="button">Добавить</button>
+            </a>{% endif %}
+        {% for i in product8 %}
+            <h1 class="name">{{ i.Name }}</h1><br><h2 class="price"><b>Цена {{ i.Price }}₽</b></h2><br>
+            <img class="image" src="{{ i.Photo.url }}" width="200" height="150">
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="case_id" value="{{ i.id }}">
+                <button type="submit" class="btn-succes">
+                    Удалить
+                </button>
+            </form>
+        {% endfor %}
+    </div>
+{% endblock %}

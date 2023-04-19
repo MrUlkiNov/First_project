@@ -1,0 +1,22 @@
+{% extends 'PC_Configurator/base_list.html' %}
+{% block Title %} Проц {% endblock %}
+{% load static %}
+{% block css_additional %}
+    <link rel="stylesheet" href=" {% static 'PC_Configurator/style.css' %}">
+    <link rel="stylesheet" href=" {% static 'PC_Configurator/product.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="product">
+        <h1>{{ processor.Name }}</h1>
+
+        <h2>Описание:</h2>
+        <div class="photo">
+            <img src="{{ processor.Photo.url }}" width="400" height="400">
+        </div>
+        <h3>Сокет - {{ processor.Socket }}<br>Количество ядер-{{ processor.Cores }}<br>Мощность ядер
+            - {{ processor.Frequency }} ГГц<br>Оперативная
+            память-{{ processor.Memory_type }}-{{ processor.Max_RAM_frequency }}Мгц<br>Графическое
+            ядро-{{ processor.Graphics_core }}<br>Теплоотдача-{{ processor.Heat_dissipation }}</h3>
+    </div>
+
+{% endblock %}

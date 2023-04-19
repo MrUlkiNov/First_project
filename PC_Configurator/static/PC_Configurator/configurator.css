@@ -1,0 +1,106 @@
+body{
+    background: radial-gradient(#525252,#292828, #050505);
+}
+.finall{
+    color: black;
+    left: 78%;
+    position: absolute;
+    top: 70%
+}
+.error{
+    color: red;
+    position: absolute;
+    top: 50%;
+    left: 10%
+}
+.text{
+    left: 45%;
+    position: absolute;
+}
+.iron-item{
+    display: block;
+    background: white;
+    border: 1px solid #c0c0c0;
+    height: 250px;
+    overflow: hidden;
+    padding: 25px 15px;
+    position: relative;
+    text-align: right;
+    transition: all 0.5s ease 0s;
+    margin-bottom: 1px;
+    margin-right: 350px;
+    margin-left: 350px;
+    border-radius: 10px;
+}
+.submit{
+    display: block;
+    background: white;
+    border: 1px solid #c0c0c0;
+    height: 250px;
+    overflow: hidden;
+    padding: 25px 15px;
+    position: relative;
+    text-align: right;
+    transition: all 0.5s ease 0s;
+    margin-bottom: 1px;
+    margin-right: 350px;
+    margin-left: 350px;
+    border-radius: 10px;
+}
+.button {
+    width: 40%;
+    height: 40%;
+    appearance: none;
+    border: 0;
+    border-radius: 10px;
+    background: darkgray;
+    color: black;
+    padding: 8px 16px;
+    font-size: 16px;
+    position: absolute;
+    top: 50%;
+    left: 30%;
+}
+.button:hover {
+  background: brown;
+}
+
+.button:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px #cbd6ee;
+}
+.btn-succes {
+    width: 20%;
+    appearance: none;
+    border: 0;
+    border-radius: 20px;
+    background: darkgray;
+    color: black;
+    padding: 8px 16px;
+    font-size: 16px;
+    position: absolute;
+    top: 70%;
+    left: 75%;
+}
+.btn-succes:hover {
+  background: brown;
+}
+
+.btn-succes:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px #cbd6ee;
+}
+.price{
+    color: black;
+    position: absolute;
+    top: 70%;
+    left: 45%;
+}
+.image{
+    top:15%;
+    position: absolute;
+    left: 3%;
+}
+.name {
+    font-size: 30px;
+}
